@@ -26,5 +26,5 @@ jobs:
       - run: python main.php $mail $username $password
         env:
           mail: ${{ secrets.MAIL }}
-          username: ${{ secrets.USERNAME }
-          password: ${{ secrets.PASSWORD }
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
