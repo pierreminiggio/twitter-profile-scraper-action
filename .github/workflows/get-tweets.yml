@@ -24,7 +24,7 @@ jobs:
       - run: pip install -r requirements.txt
         working-directory: ./selenium-twitter-scraper
       - run: python main.php $mail $username $password
-        with:
+        env:
           mail: ${{ secrets.MAIL }}
           username: ${{ secrets.USERNAME }
           password: ${{ secrets.PASSWORD }
