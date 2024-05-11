@@ -22,7 +22,7 @@ jobs:
           username: ${{ github.event.inputs.username }}
       - run: git clone --branch fork-master https://github.com/pierreminiggio/selenium-twitter-scraper scraper
       - run: pip install -r scraper/requirements.txt
-      - run: python main.php $mail $username $password
+      - run: python main.py $mail $username $password
         env:
           mail: ${{ secrets.MAIL }}
           username: ${{ secrets.USERNAME }}
