@@ -1,7 +1,7 @@
 on:
   workflow_dispatch:
     inputs:
-      username:
+      username_to_scrape:
         description: "Twitter Username"
         required: true
         default: "PierreMiniggio"
@@ -23,9 +23,14 @@ jobs:
       - run: git clone --branch fork-master https://github.com/pierreminiggio/selenium-twitter-scraper scraper
       - run : pip --version
       - run: pip install -r scraper/requirements.txt
-      - run: python main.py $mail $username $password $proxy
+      - run: python main.py $username_to_scrape $mail $username $password $proxy
         env:
+          username_to_scrape: ${{ github.event.inputs.username }}
           mail: ${{ secrets.MAIL }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           proxy: ${{ secrets.PROXY }}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: tweets.json
+          path: tweets.json
