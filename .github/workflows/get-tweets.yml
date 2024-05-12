@@ -17,15 +17,15 @@ jobs:
       - uses: actions/checkout@main
       - uses: actions/setup-python@v2
       - run: sudo apt update
-      - run: echo $username
+      - run: echo $username_to_scrape
         env:
-          username: ${{ github.event.inputs.username }}
+          username_to_scrape: ${{ github.event.inputs.username_to_scrape }}
       - run: git clone --branch fork-master https://github.com/pierreminiggio/selenium-twitter-scraper scraper
       - run : pip --version
       - run: pip install -r scraper/requirements.txt
       - run: python main.py $username_to_scrape $mail $username $password $proxy
         env:
-          username_to_scrape: ${{ github.event.inputs.username }}
+          username_to_scrape: ${{ github.event.inputs.username_to_scrape }}
           mail: ${{ secrets.MAIL }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
