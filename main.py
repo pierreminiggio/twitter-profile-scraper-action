@@ -1,6 +1,8 @@
-from scraper.scraper.twitter_scraper import Twitter_Scraper
-
 import sys
+
+sys.path.insert(0, 'scraper/scraper')
+
+from scraper.scraper.twitter_scraper import Twitter_Scraper
 
 args = sys.argv
 
